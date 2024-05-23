@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="bulb-container"><img src="1.png" /></div>
+
+    <button onclick="onLight()">On</button>
+    <button onclick="offLight()">Off</button>
+
+    <script>
+      function onLight() {
+        let bulbContainer = document.getElementById("bulb-container");
+        let imagetag = document.createElement("img");
+        imagetag.src = "2.png";
+        bulbContainer.innerHTML = "";
+
+        bulbContainer.appendChild(imagetag);
+      }
+
+      function offLight() {
+        let bulbContainer = document.getElementById("bulb-container");
+        let imagetag = document.createElement("img");
+        imagetag.src = "1.png";
+
+        bulbContainer.innerHTML = "";
+        bulbContainer.appendChild(imagetag);
+      }
+    </script>
+  </body>
+</html>

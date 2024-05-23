@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="game.css" />
+    <div id="game-board"></div>
+    <p>Your score: <span id="score">0</span></p>
+
+    <script>
+      let score = 0;
+      var scoreElement = document.getElementById("score");
+      console.log("scoreElement.textContent", scoreElement.textContent);
+
+      function createBoard() {
+        var gamearea = document.getElementById("game-board");
+        gamearea.style.width = "600px";
+        gamearea.style.height = "600px";
+        gamearea.style.background = "#DADBDD";
+      }
+
+      function moveMosquito() {
+        let top = Math.floor(Math.random() * (500 - 100));
+        let left = Math.floor(Math.random() * (500 - 100));
+
+        var gamearea = document.getElementById("game-board");
+        var mosquito = document.createElement("img");
+
+        mosquito.src =
+          "https://i.pinimg.com/originals/9e/0e/4c/9e0e4c3db41fe8202d732dce971d8619.gif";
+
+        mosquito.style.height = "35px";
+        mosquito.style.width = "35px";
+
+        mosquito.style.marginTop = `${top}px`;
+        mosquito.style.marginLeft = `${left}px`;
+
+        gamearea.innerHTML = "";
+        gamearea.appendChild(mosquito);
+        mosquito.addEventListener("click", function () {
+          score++;
+          scoreElement.textContent = score;
+          var audio = new Audio("mosquito.mp3");
+          audio.play();
+        });
+      }
+
+      function startGame() {
+        createBoard();
+        moveMosquito();
+        setInterval(() => {
+          moveMosquito();
+        }, 2000);
+      }
+
+      startGame();
+    </script>
+  </body>
+</html>
