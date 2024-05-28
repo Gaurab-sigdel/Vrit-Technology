@@ -9,17 +9,21 @@
     <script>
       debugger;
 
-      function overall() {
-        function checkstack() {
-          for (var i = 0; i < 100; i++) {
-            console.log(i);
+      const arr = [1, 2, 3, [4, 5, 6, [7, 8, 9]]];
+      var flattenarrlist = [];
+
+      function flattenArray(arraylist) {
+        arrlist?.forEach((element) => {
+          if (Array.isArray(element)) {
+            flattenArray(element);
+            return;
           }
 
-          checkstack();
-        }
+          flattenarrlist.push(element);
+        });
       }
 
-      checkstack();
+      flattenArray(arr);
     </script>
   </body>
 </html>
